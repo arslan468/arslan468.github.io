@@ -1,142 +1,488 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mehmet Alp Arslan | Öğrenci & Geliştirici</title>
-    
-    <!-- Favicon Ayarı: 'favicon.png' adında bir resim dosyasını bu html ile aynı klasöre koy -->
+    <title>Mehmet Alp Arslan</title>
     <link rel="icon" type="image/png" href="images/favicon.png"> 
-
-    <!-- Tailwind CSS (Tasarım için) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts (Modern yazı tipi) -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome (İkonlar için) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 
-    <style>
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: #0f172a; /* Koyu arka plan */
-            background-image: 
-                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
-                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
-            background-size: cover;
-            background-repeat: no-repeat;
-            min-height: 100vh;
-        }
-        
-        /* Animasyonlar */
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+    <!-- Tailwind Konfigürasyonu: Renkleri ve Dark Mode ayarı-->
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Class tabanlı dark mode (elle değiştirmek için)
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#4f46e5', // Açık tema ana rengi (İndigo)
+                            dark: '#818cf8',  // Koyu tema ana rengi
+                        }
+                    }
+                }
             }
         }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-
-        .profile-glow:hover {
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
-            border-color: rgba(99, 102, 241, 0.8);
-        }
-    </style>
+    </script>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3C5CLYCGVF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
 
-  gtag('config', 'G-3C5CLYCGVF');
-</script>
-<body class="flex items-center justify-center p-4 text-white selection:bg-indigo-500 selection:text-white">
-
-    <!-- Ana Kapsayıcı -->
-    <main class="glass-card w-full max-w-md p-8 rounded-2xl text-center relative overflow-hidden fade-in-up">
-        
-        <!-- Dekoratif Arka Plan Işıltısı -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-
-        <!-- Profil Resmi / Avatar -->
-        <div class="relative z-10 mb-6 group">
-            <div class="w-32 h-32 mx-auto rounded-full p-1 border-2 border-white/20 profile-glow transition-all duration-300 cursor-pointer overflow-hidden relative">
-
-                <img src="images/favicon.png" 
-                     alt="Mehmet Alp Arslan" 
-                     class="w-full h-full rounded-full object-cover bg-gray-800">
+   <nav id="main-nav" class="fixed w-full z-50 top-0 left-0 bg-white/80 dark:bg-gray-900/90 backdrop-blur-md shadow-lg border-b border-gray-200 dark:border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 relative z-50">
+                    <a href="#" class="text-2xl font-bold text-brand-light dark:text-brand-dark tracking-tighter hover:scale-105 transition-transform">
+                        &lt;Arslan&gt;
+                    </a>
+                </div>
                 
-                <!-- Hover Efekti -->
-                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full">
-                    <span class="text-xs font-bold">Selam! 👋</span>
+                <!-- Desktop Menü -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="hover:text-brand-light dark:hover:text-brand-dark px-3 py-2 rounded-md text-sm font-medium transition-colors">Hakkımda</a>
+                        <a href="#projects" class="hover:text-brand-light dark:hover:text-brand-dark px-3 py-2 rounded-md text-sm font-medium transition-colors">Projelerim</a>
+                        <a href="#contact" class="hover:text-brand-light dark:hover:text-brand-dark px-3 py-2 rounded-md text-sm font-medium transition-colors">İletişim</a>
+                        
+                        <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none">
+                            <i class="fas fa-moon dark:hidden"></i>
+                            <i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- MOBİL MENÜ BUTONU-->
+                <div class="-mr-2 flex md:hidden relative z-50">
+                    <button id="hamburger-btn" type="button" class="group w-10 h-10 flex items-center justify-center rounded-md focus:outline-none">
+                        <div class="flex flex-col justify-between w-6 h-5 transform transition-all duration-300 origin-center overflow-hidden">
+                            <div class="bg-gray-800 dark:bg-gray-200 h-[2px] w-7 transform transition-all duration-300 origin-left group-[.open]:rotate-[42deg] group-[.open]:w-2/3 delay-75"></div>
+                            <div class="bg-gray-800 dark:bg-gray-200 h-[2px] w-7 rounded transform transition-all duration-300 group-[.open]:-translate-x-10"></div>
+                            <div class="bg-gray-800 dark:bg-gray-200 h-[2px] w-7 transform transition-all duration-300 origin-left group-[.open]:-rotate-[42deg] group-[.open]:w-2/3 delay-75"></div>
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>
+    </nav>
 
-        <!-- İsim ve Unvan -->
-        <h1 class="text-3xl md:text-4xl font-bold mb-2 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 to-indigo-400 delay-100 fade-in-up">
-            Mehmet Alp Arslan
-        </h1>
-        <p class="text-indigo-200/80 text-lg font-light mb-6 delay-200 fade-in-up">
-            Öğrenci & Web Geliştirici
-        </p>
+    <!-- MOBİL MENÜ-->
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-40 bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl flex flex-col justify-center items-center opacity-0 pointer-events-none transition-all duration-500 md:hidden">
+        
 
-        <!-- Durum Bildirimi (Sınav Modu) -->
-        <div class="bg-indigo-500/10 border border-indigo-500/20 rounded-lg p-4 mb-8 delay-300 fade-in-up">
-            <div class="flex items-center justify-center gap-2 mb-2">
-                <span class="relative flex h-3 w-3">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-3 w-3 bg-indigo-500"></span>
-                </span>
-                <span class="text-sm font-semibold tracking-wide uppercase text-indigo-300">Durum: Sınav Modu😎</span>
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-brand-light/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+
+        <nav class="flex flex-col space-y-8 text-center relative z-10">
+            <a href="#about" class="mobile-link text-3xl font-bold text-gray-800 dark:text-gray-100 hover:text-brand-light dark:hover:text-brand-dark transform translate-y-8 opacity-0 transition-all duration-500">
+                Hakkımda
+            </a>
+            <a href="#projects" class="mobile-link text-3xl font-bold text-gray-800 dark:text-gray-100 hover:text-brand-light dark:hover:text-brand-dark transform translate-y-8 opacity-0 transition-all duration-500 delay-100">
+                Projelerim
+            </a>
+            <a href="#contact" class="mobile-link text-3xl font-bold text-gray-800 dark:text-gray-100 hover:text-brand-light dark:hover:text-brand-dark transform translate-y-8 opacity-0 transition-all duration-500 delay-200">
+                İletişim
+            </a>
+            
+            <!-- Mobilde Tema Değiştirme -->
+            <div class="mobile-link transform translate-y-8 opacity-0 transition-all duration-500 delay-300 pt-8">
+                 <button id="mobile-theme-toggle" class="px-6 py-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 font-semibold shadow-lg active:scale-95 transition-transform flex items-center gap-3 mx-auto">
+                    <span class="dark:hidden">Karanlık Mod</span>
+                    <span class="hidden dark:inline">Aydınlık Mod</span>
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
+                </button>
             </div>
-            <p class="text-gray-400 text-sm leading-relaxed">
-                Karadeniz Teknik Üniversitesi<br>Yazılım Mühendisliği 1. sınıf öğrencisiyim👨🏻‍💻<br>
-                Çok yakında burası şahane projelerle dolacak.<br> Takipte kalın!
-            </p>
+        </nav>
+    </div>
+
+
+    <header class="relative h-screen flex items-center justify-center text-white overflow-hidden">
+        <div class="absolute inset-0 animated-bg z-0 opacity-90 dark:opacity-80"></div>
+        
+        
+        <div class="relative z-10 text-center px-4">
+            <h2 class="text-xl md:text-2xl font-light mb-4 tracking-widest uppercase animate-pulse">Hoş Geldiniz</h2>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg">Ben <span class="text-slate-400">Mehmet Alp ARSLAN</span></h1>
+            <p class="text-lg md:text-2xl mb-10 max-w-2xl mx-auto font-normal">Karadeniz Teknik Üniversitesi Yazılım Mühendisliği <br>1. Sınıf Öğrencisiyim</p>
+            
+            <a href="#about" class="inline-block bg-white text-slate-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 hover:scale-105 transition transform duration-300">
+                Keşfetmeye Başla <i class="fas fa-arrow-down ml-2"></i>
+            </a>
+        </div>
+        
+        <!-- Aşağı kaydır ikonu -->
+        <div class="absolute bottom-10 animate-bounce z-10">
+            <i class="fas fa-chevron-down text-3xl"></i>
+        </div>
+    </header>
+
+    <!-- 
+      HAKKIMDA BÖLÜMÜ 
+    -->
+    <section id="about" class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center reveal">
+                <div class="flex justify-center">
+                    <div class="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-brand-light to-purple-500 profile-blob overflow-hidden shadow-2xl relative">
+
+                        <img src="/arslan468.github.io/images/img1.png" alt="Profil Resmi" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- Yazı -->
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white border-l-4 border-brand-light pl-4">Hakkımda</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                        Merhaba! Ben 9. sınıftan beri programlama teknolojileri, robot ve teknik projeler, web tasarım, görüntü işleme gibi alanlar üzerine çalışan tutkulu bir geliştiriciyim.<br> Kullanıcı deneyimini ön planda tutan, temiz kod yapısına sahip projeler geliştirmeyi seviyorum. Son zamanlarda siber güvenlik alanına duyduğum ilgiden dolayı bu alanda bootcamplere katılıyorum CTF yarışmalarına katılıp farklı yollardan kendimi geliştirmeye çalışıyorum. 
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Teknoloji benim için bir iş değil en sevdiğim hobim. Sürekli öğrenmek ve geliştiğimi başardığımı hissetmek en büyük motivasyonum.
+                    </p>
+                    
+                    <!-- Yetenekler -->
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full text-sm font-semibold">C</span>
+                        <span class="px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full text-sm font-semibold">Python</span>
+                        <span class="px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full text-sm font-semibold">C++</span>
+                        <span class="px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full text-sm font-semibold">JavaScript</span>
+                        <span class="px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full text-sm font-semibold">PHP</span>
+                        <span class="px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full text-sm font-semibold">Java</span>
+                        <span class="px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full text-sm font-semibold">Sql</span>
+                        <span class="px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full text-sm font-semibold">FireBase</span>
+                        <span class="px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full text-sm font-semibold">Arduino</span>
+
+                    </div>
+
+                    <a href="#contact" class="text-brand-light dark:text-brand-dark font-semibold hover:underline">
+                        Benimle İletişime geçmek İster misin? &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- PROJELERİM BÖLÜMÜ-->
+    <section id="projects" class="py-24 bg-gray-50 dark:bg-gray-800 transition-colors duration-300 relative overflow-hidden">
+        
+        <div class="absolute top-0 left-0 w-64 h-64 bg-brand-light/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-brand-dark/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+                    Projelerim
+                    <span class="text-brand-light"></span>
+                </h2>
+                <div class="w-24 h-1.5 bg-brand-light mx-auto mt-4 rounded-full"></div>
+                <p class="mt-6 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Kod satırları arasında kaybolup ortaya çıkardığım, gecemi gündüzüme kattığım işler.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                
+                <!-- Proje Kartı 1 akıllı tarım -->
+                <div class="group relative h-[450px] rounded-2xl overflow-hidden shadow-2xl cursor-pointer reveal" style="transition-delay: 200ms;">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" 
+                         alt="Admin Paneli" 
+                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90 transition-all duration-500 group-hover:bg-slate-900/90 group-hover:via-slate-900/90"></div>
+
+                    <div class="absolute inset-0 flex flex-col justify-end p-8 translate-y-[80px] transition-transform duration-500 group-hover:translate-y-0">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 bg-brand-light text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-lg">HTML</span>
+                            <span class="px-3 py-1 bg-brand-light text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-lg">CSS</span>
+                            <span class="px-3 py-1 bg-brand-light text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-lg">JAVASCRIPT</span>
+                            <span class="text-gray-300 text-xs font-medium border border-gray-500 px-2 py-0.5 rounded">2023</span>
+                        </div>
+
+                        <h3 class="text-3xl font-bold text-white mb-6 leading-tight group-hover:text-brand-dark transition-colors">Akıllı Tarım Projesi</h3>
+                        
+                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-75 h-0 group-hover:h-auto overflow-hidden">
+                            <p class="text-gray-300 text-sm mb-6 line-clamp-3 leading-relaxed">
+                                İnsider Staj programı bitirme projesi kapsamında ekip olarak geliştirdiğimiz Akıllı Tarım Planlama Projemiz
+                            </p>
+                            <div class="flex gap-4">
+                                <a href="https://github.com/arslan468/The-Web-Weavers-Proje" target="_blank" class="flex-1 py-3 border border-gray-500 text-white rounded-xl font-bold text-center hover:border-white hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
+                                    <i class="fab fa-github"></i> Kodlar
+                                </a>
+                            </div>
+                        </div>
+
+                         <div class="mt-4 group-hover:hidden animate-bounce text-white/50 text-center">
+                            <i class="fas fa-chevron-up text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proje Kartı 2 - Mobil Uygulama -->
+                <div class="group relative h-[450px] rounded-2xl overflow-hidden shadow-2xl cursor-pointer reveal" style="transition-delay: 100ms;">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1000&auto=format&fit=crop" 
+                         alt="Mobil Uygulama" 
+                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90 transition-all duration-500 group-hover:bg-slate-900/90 group-hover:via-slate-900/90"></div>
+
+                    <div class="absolute inset-0 flex flex-col justify-end p-8 translate-y-[80px] transition-transform duration-500 group-hover:translate-y-0">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 bg-brand-light text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-lg">Java</span>
+                            <span class="text-gray-300 text-xs font-medium border border-gray-500 px-2 py-0.5 rounded">2023</span>
+                        </div>
+
+                        <h3 class="text-3xl font-bold text-white mb-6 leading-tight group-hover:text-brand-dark transition-colors">Mobil Uygulama</h3>
+                        
+                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-75 h-0 group-hover:h-auto overflow-hidden">
+                            <p class="text-gray-300 text-sm mb-6 line-clamp-3 leading-relaxed">
+                                Lise de yapmış olduğum bu proje aldığım dersler doğrultusunda kendimi geliştirmek için yapmış olduğum  java ile yazılmış uygulama projesi.
+                            </p>
+                            <div class="flex gap-4">
+                                <a href="https://github.com/arslan468/Mobil_Uygulama_Proje" target="_blank" class="flex-1 py-3 border border-gray-500 text-white rounded-xl font-bold text-center hover:border-white hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
+                                    <i class="fab fa-github"></i> Kodlar
+                                </a>
+                            </div>
+                        </div>
+
+                         <div class="mt-4 group-hover:hidden animate-bounce text-white/50 text-center">
+                            <i class="fas fa-chevron-up text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proje Kartı 3 - C ile veri tabanı-->
+                <div class="group relative h-[450px] rounded-2xl overflow-hidden shadow-2xl cursor-pointer reveal">
+                    <!-- Arka Plan Resmi -->
+                    <img src="images/nexus.jpg" 
+                         alt="E-Ticaret" 
+                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1">
+                    
+                    <!-- Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90 transition-all duration-500 group-hover:bg-slate-900/90 group-hover:via-slate-900/90"></div>
+
+                    <!-- İçerik Alanı -->
+                    <div class="absolute inset-0 flex flex-col justify-end p-8 translate-y-[80px] transition-transform duration-500 group-hover:translate-y-0">
+                        <!-- Kategori / Tarih -->
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 bg-brand-light text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-lg">Geliştirme Sürecinde</span>
+                            <span class="px-3 py-1 bg-brand-light text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-lg">C</span>
+                            <span class="px-3 py-1 bg-brand-light text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-lg">MongoDB</span>
+                            <span class="text-gray-300 text-xs font-medium border border-gray-500 px-2 py-0.5 rounded">2025</span>
+                        </div>
+
+                        <!-- Başlık -->
+                        <h3 class="text-3xl font-bold text-white mb-6 leading-tight group-hover:text-brand-dark transition-colors">Nexus-KV</h3>
+                        
+                        <!-- Hoverda Açılan Detay-->
+                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-75 h-0 group-hover:h-auto overflow-hidden">
+                            <p class="text-gray-300 text-sm mb-6 line-clamp-3 leading-relaxed">
+                                NexusKV, C programlama dilinin bellek yönetimi gücünü ve MongoDB'yi birleştiren yüksek performanslı bir veri motorudur.
+                            </p>
+                            <div class="flex gap-4">
+                                <a href="https://github.com/arslan468/NexusKV" target="_blank" class="flex-1 py-3 border border-gray-500 text-white rounded-xl font-bold text-center hover:border-white hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
+                                    <i class="fab fa-github"></i> Kodlar
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- "Daha Fazla" İkonu-->
+                         <div class="mt-4 group-hover:hidden animate-bounce text-white/50 text-center">
+                            <i class="fas fa-chevron-up text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+ <!-- SOSYAL MEDYA HUB-->
+    <section id="contact" class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300 relative overflow-hidden">
+        <!-- Arka plan dekorasyon -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-brand-light/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1.5s;"></div>
         </div>
 
-        <!-- Sosyal Medya İkonları -->
-        <div class="flex justify-center gap-6 delay-300 fade-in-up">
-            <a href="https://github.com/arslan468" class="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300">
-                <i class="fab fa-github text-2xl"></i>
-            </a>
-            <a href="https://www.instagram.com/mehme1_alp/" class="text-gray-400 hover:text-pink-500 hover:scale-110 transition-all duration-300">
-                <i class="fab fa-instagram text-2xl"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/mehmetalparslan-/" class="text-gray-400 hover:text-blue-600 hover:scale-110 transition-all duration-300">
-                <i class="fab fa-linkedin text-2xl"></i>
-            </a><!--
-            <a href="5alparslanmehmet8@gmail.com" class="text-gray-400 hover:text-indigo-400 hover:scale-110 transition-all duration-300">
-                <i class="fas fa-envelope text-2xl"></i>
-            </a>-->
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+                    Bana Ulaşın
+                    <span class="text-brand-light"></span>
+                </h2>
+                <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Kodlar karıştıysa, proje konuşacaksak ya da öylesine bi sohbet ediceksek, buralarda beni bulabilirsin.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/mehmetalparslan-/" target="_blank" class="group relative p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-blue-500/30 overflow-hidden">
+                    <div class="absolute inset-0 bg-blue-500/5 group-hover:bg-blue-500/10 transition-colors duration-300"></div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center shadow-md mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fab fa-linkedin-in text-3xl text-gray-400 group-hover:text-[#0077b5] transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">LinkedIn</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Profesyonel ağım</p>
+                    </div>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/arslan468" target="_blank" class="group relative p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-gray-500/30 overflow-hidden">
+                    <div class="absolute inset-0 bg-gray-500/5 group-hover:bg-gray-500/10 transition-colors duration-300"></div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center shadow-md mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fab fa-github text-3xl text-gray-400 group-hover:text-black dark:group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">GitHub</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Kod çöplüğüm</p>
+                    </div>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/mehme1_alp/" target="_blank" class="group relative p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-pink-500/30 overflow-hidden">
+                    <div class="absolute inset-0 bg-pink-500/5 group-hover:bg-pink-500/10 transition-colors duration-300"></div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center shadow-md mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fab fa-instagram text-3xl text-gray-400 group-hover:text-[#E1306C] transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Instagram</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">DM'den yürü</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Email Butonu -->
+            <div class="mt-12 text-center">
+                <button id="copy-email-btn" class="inline-flex items-center gap-2 px-8 py-4 bg-brand-light hover:bg-brand-dark text-white rounded-full font-bold shadow-lg shadow-brand-light/30 transition-all hover:scale-105 active:scale-95 cursor-pointer">
+                    <i class="fas fa-envelope"></i>
+                    <span>Bana Mail At</span>
+                </button>
+            </div>
         </div>
+        </div>
+    </section>
 
-        <!-- Footer -->
-        <footer class="mt-12 text-xs text-gray-500/50 delay-300 fade-in-up">
-            &copy; <script>document.write(new Date().getFullYear())</script> Mehmet Alp Arslan. Tüm hakları saklıdır.
-        </footer>
-    </main>
+    <!-- FOOTER -->
+    <footer class="bg-gray-100 dark:bg-black py-8 text-center text-gray-500 dark:text-gray-600 transition-colors duration-300">
+        <p>&copy; 2026 Tüm Hakları Pekte Saklı değil. <span class="text-brand-light">Sevgiyle kalın.</span></p>
+    </footer>
 
+    <script>
+        // --- DARK MODE ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        // Kullanıcının daha öncekitercihi var mı kontrol
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+
+        // Butona basınca değiştir
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+            } else {
+                localStorage.theme = 'light';
+            }
+        });
+
+        // --- NAVBAR SCROLL EFEKTİ ---
+        const navbar = document.getElementById('main-nav');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                navbar.classList.add('visible-nav');
+            } else {
+                navbar.classList.remove('visible-nav');
+            }
+        });
+
+        // --- SCROLL ANIMASYONLARI ---
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 }); 
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+ // --- MOBİL MENÜ ---
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            
+            // X şekli için class
+            hamburgerBtn.classList.toggle('open');
+            
+            if (isMenuOpen) {
+                // Aç
+                mobileMenuOverlay.classList.remove('pointer-events-none', 'opacity-0');
+                document.body.style.overflow = 'hidden'; // Kaydırmayı engelle
+                
+                // Linkler animasyon
+                mobileLinks.forEach((link, index) => {
+                    setTimeout(() => {
+                        link.classList.remove('translate-y-8', 'opacity-0');
+                    }, index * 100);
+                });
+            } else {
+                // Kapat
+                mobileMenuOverlay.classList.add('pointer-events-none', 'opacity-0');
+                document.body.style.overflow = ''; 
+                mobileLinks.forEach(link => {
+                    link.classList.add('translate-y-8', 'opacity-0');
+                });
+            }
+        }
+
+        if(hamburgerBtn) {
+            hamburgerBtn.addEventListener('click', toggleMenu);
+        }
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(isMenuOpen) toggleMenu();
+            });
+        });
+        // --- MAIL KOPYALAMA ---
+        const copyEmailBtn = document.getElementById('copy-email-btn');
+        const myEmail = "5alparslanmehmet8@gmail.com";
+
+        if(copyEmailBtn) {
+            copyEmailBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(myEmail).then(() => {
+                    const originalContent = copyEmailBtn.innerHTML;
+                    copyEmailBtn.innerHTML = '<i class="fas fa-check"></i> <span>Kopyalandı!</span>';
+                    copyEmailBtn.classList.remove('bg-brand-light', 'hover:bg-brand-dark');
+                    copyEmailBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+                    setTimeout(() => {
+                        copyEmailBtn.innerHTML = originalContent;
+                        copyEmailBtn.classList.remove('bg-green-500', 'hover:bg-green-600');
+                        copyEmailBtn.classList.add('bg-brand-light', 'hover:bg-brand-dark');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Kopyalama hatası:', err);
+                    alert('Kopyalanamadı, elle alıver: ' + myEmail);
+                });
+            });
+        }
+    </script>
 </body>
 </html>
